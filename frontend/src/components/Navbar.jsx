@@ -31,9 +31,43 @@ export default function Navbar() {
             {user ? (
               <>
                 <li>
-                  <span style={{ color: "white", fontWeight: "bold" }}>
-                    Welcome, {user.fullName || user.name || "User"}
-                  </span>
+                  <Link to="/post-job">Post a Job</Link>
+                </li>
+                <li>
+                  <Link to="/profile">My Applications</Link>
+                </li>
+                <li>
+                  <Link
+                    to="/profile"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      color: "white",
+                      textDecoration: "none",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "28px",
+                        height: "28px",
+                        borderRadius: "50%",
+                        backgroundColor: "#40826D",
+                        color: "white",
+                        border: "1px solid white",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "14px",
+                      }}
+                    >
+                      {(user.fullName || user.name || "U")
+                        .charAt(0)
+                        .toUpperCase()}
+                    </div>
+                    {(user.fullName || user.name || "User").split(" ")[0]}
+                  </Link>
                 </li>
                 <li>
                   <button

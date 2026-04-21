@@ -1,12 +1,11 @@
 package com.thrall.backend.model;
 
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -31,6 +30,8 @@ public class Job {
 
     // optional, e.g. "₹5-8 LPA"
     private String salary;
+
+    private String postedByUserId;
 
     private LocalDateTime postedAt = LocalDateTime.now();
 }
