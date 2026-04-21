@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>© 2026 Thrall. All rights reserved.</p>
+          <p>(c) 2026 Thrall. All rights reserved.</p>
         </div>
       </div>
     </footer>
