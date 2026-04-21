@@ -39,7 +39,7 @@ export default function JobDetail() {
         <div style={{ textAlign: "center", padding: "50px" }}>
           <h2>Job not found</h2>
           <button className="back-btn" onClick={() => navigate(-1)}>
-            ← Back to Jobs
+            Back to Jobs
           </button>
         </div>
       </>
@@ -64,11 +64,11 @@ export default function JobDetail() {
       <div className="detail-page">
         <div className="detail-left">
           <button className="back-btn" onClick={() => navigate(-1)}>
-            ← Back to Jobs
+            Back to Jobs
           </button>
           <h1 className="detail-title">{job.title}</h1>
           <div className="detail-company">
-            {job.company} • {job.location}
+            {job.company} - {job.location}
           </div>
 
           <div className="detail-pills">

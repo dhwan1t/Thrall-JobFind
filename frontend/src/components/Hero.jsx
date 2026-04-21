@@ -8,8 +8,8 @@ export default function Hero() {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const jobs = await getAllJobs();
-        setJobCount(jobs.length);
+        const response = await getAllJobs();
+        setJobCount(response.data.length);
       } catch (error) {
         console.error("Failed to fetch job count:", error);
       }

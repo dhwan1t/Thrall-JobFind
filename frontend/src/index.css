@@ -941,3 +941,11 @@ select.form-input:focus, textarea.form-input:focus, input.form-input:focus { out
 .post-job-page .btn-submit { width:100%; padding:14px; background:var(--primary-color); color:white; border:none; border-radius:8px; font-size:16px; font-weight:700; cursor:pointer; margin-top:8px; }
 .post-job-page .btn-submit:hover { background:var(--primary-dark); }
 
+.hero-stats { display: flex; gap: 20px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+.hero-stat { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 6px 16px; font-size: 13px; font-weight: 600; }
+
+.category-card { cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+.category-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(64,130,109,0.15); border-color: var(--primary-color); }
+
+.applied-badge { font-size: 12px; font-weight: 700; color: #40826D; background: #e8f5f1; border: 1px solid #40826D; border-radius: 20px; padding: 4px 12px; }
+

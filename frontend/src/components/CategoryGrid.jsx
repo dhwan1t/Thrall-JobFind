@@ -2,14 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const categories = [
-  { name: "IT & Software", icon: "💻", count: 8 },
-  { name: "Marketing", icon: "📢", count: 3 },
-  { name: "Design", icon: "🎨", count: 2 },
-  { name: "Finance", icon: "💰", count: 2 },
-  { name: "Engineering", icon: "⚙️", count: 2 },
-  { name: "Sales", icon: "🤝", count: 2 },
-  { name: "Management", icon: "📋", count: 1 },
-  { name: "Operations", icon: "🔧", count: 1 },
+  { name: "IT & Software", icon: "IT", count: 8 },
+  { name: "Marketing", icon: "MK", count: 3 },
+  { name: "Design", icon: "DS", count: 2 },
+  { name: "Finance", icon: "FN", count: 2 },
+  { name: "Engineering", icon: "EN", count: 2 },
+  { name: "Sales", icon: "SL", count: 2 },
+  { name: "Management", icon: "MG", count: 1 },
+  { name: "Operations", icon: "OP", count: 1 },
 ];
 
 const CategoryGrid = () => {

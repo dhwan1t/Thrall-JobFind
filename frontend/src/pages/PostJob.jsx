@@ -146,7 +146,7 @@ const PostJob = () => {
           type="text"
           name="salary"
           className="form-input"
-          placeholder="e.g. ₹6-10 LPA or ₹15,000/month (Optional)"
+          placeholder="e.g. 6-10 LPA or 15,000/month (Optional)"
           value={formData.salary}
           onChange={handleChange}
         />

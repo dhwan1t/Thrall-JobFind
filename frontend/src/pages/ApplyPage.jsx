@@ -61,7 +61,7 @@ const ApplyPage = () => {
       <div className="apply-page">
         {status === "success" ? (
           <div className="success-box">
-            <h3>Application submitted successfully! 🎉</h3>
+            <h3>Application submitted successfully!</h3>
             <Link to="/jobs">
               <button
                 className="btn-apply-now"
@@ -79,7 +79,7 @@ const ApplyPage = () => {
               <div className="apply-job-info">
                 <div className="apply-job-title">{job.title}</div>
                 <div className="apply-job-company">
-                  {job.company} {job.location && `• ${job.location}`}
+                  {job.company} {job.location && ` - ${job.location}`}
                 </div>
               </div>
             )}

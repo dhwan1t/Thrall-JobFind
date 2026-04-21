@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const JobCard = ({ job }) => {
+const JobCard = ({ job, applied }) => {
   const navigate = useNavigate();
 
   const truncateDescription = (desc) => {
@@ -53,10 +53,10 @@ const JobCard = ({ job }) => {
 
       <div className="job-meta">
         <div className="meta-chip">
-          📍 {job.location || "Location not specified"}
+          {job.location || "Location not specified"}
         </div>
-        <div className="meta-chip">💼 {job.type || "Full-time"}</div>
-        <div className="meta-chip">💰 {salaryDisplay}</div>
+        <div className="meta-chip">{job.type || "Full-time"}</div>
+        <div className="meta-chip">{salaryDisplay}</div>
       </div>
 
       <div className="job-tags">
@@ -66,11 +66,21 @@ const JobCard = ({ job }) => {
 
       <p className="job-desc-preview">{truncateDescription(job.description)}</p>
 
-      <div className="job-card-footer">
+      <div
+        className="job-card-footer"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <span className="posted-date">{postedDateDisplay}</span>
-        <button className="btn-view-details" onClick={handleNavigate}>
-          View Details
-        </button>
+        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+          {applied && <span className="applied-badge">Applied</span>}
+          <button className="btn-view-details" onClick={handleNavigate}>
+            View Details
+          </button>
+        </div>
       </div>
     </div>
   );
