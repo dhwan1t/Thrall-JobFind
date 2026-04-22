@@ -1,0 +1,38 @@
+# custom files
+plan.json
+prompts.json
+thrall-promptbook-v2.html
+parse_plan.py
+
+# React
+node_modules/
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Env
+.env
+
+
+.DS_Store
+plan.json
+prompts.json
+thrall-promptbook-v2.html
+
+
+# Mac
+.DS_Store
+# Java / Spring Boot
+
+target/
+*.log
+*.class
+
+
+.DS_Store
+plan.json
+prompts.json
+thrall-promptbook-v2.html

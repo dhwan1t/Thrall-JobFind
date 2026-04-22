@@ -2,12 +2,11 @@ package com.thrall.backend.config;
 
 import com.thrall.backend.model.Job;
 import com.thrall.backend.repository.JobRepository;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 @Component
 public class DataSeeder implements CommandLineRunner {
@@ -20,36 +19,70 @@ public class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (jobRepository.count() < 5) {
-            jobRepository.deleteAll();
+        if (jobRepository.count() == 0) {
+            System.out.println("Seeding database...");
 
-            List<Job> jobs = Arrays.asList(
-                new Job(null, "React Developer", "Swiggy", "Bangalore", "Full-time", "IT & Software", "Build consumer-facing React applications for India's leading food delivery platform. Work with a high-scale engineering team.", "₹8-14 LPA", LocalDateTime.now().minusDays(1)),
-                new Job(null, "Android Developer Intern", "Zomato", "Gurgaon", "Internship", "IT & Software", "Work on Zomato's Android app used by millions. Learn Jetpack Compose and modern Android development.", "₹20,000/month", LocalDateTime.now().minusDays(2)),
-                new Job(null, "Data Analyst", "Flipkart", "Bangalore", "Full-time", "IT & Software", "Analyse customer behaviour and sales data to drive business decisions. SQL and Python required.", "₹6-10 LPA", LocalDateTime.now().minusDays(1)),
-                new Job(null, "UI/UX Designer", "Meesho", "Remote", "Full-time", "Design", "Design intuitive interfaces for our social commerce platform. Figma expertise required.", "₹7-12 LPA", LocalDateTime.now().minusDays(3)),
-                new Job(null, "Product Manager", "CRED", "Bangalore", "Full-time", "Management", "Own the product roadmap for CRED's rewards platform. 2+ years product experience preferred.", "₹18-28 LPA", LocalDateTime.now().minusDays(4)),
-                new Job(null, "Backend Java Developer", "Infosys", "Pune", "Full-time", "IT & Software", "Develop Spring Boot microservices for enterprise clients. Experience with REST APIs required.", "₹6-10 LPA", LocalDateTime.now().minusDays(5)),
-                new Job(null, "Digital Marketing Intern", "Nykaa", "Mumbai", "Internship", "Marketing", "Assist with SEO, paid campaigns, and influencer marketing for Nykaa's beauty platform.", "₹12,000/month", LocalDateTime.now().minusDays(2)),
-                new Job(null, "Financial Analyst", "Deloitte", "Hyderabad", "Full-time", "Finance", "Provide financial advisory and modelling services to Fortune 500 clients.", "₹7-12 LPA", LocalDateTime.now().minusDays(6)),
-                new Job(null, "Machine Learning Engineer", "Ola", "Bangalore", "Full-time", "IT & Software", "Build ML models for ride demand prediction and driver allocation. TensorFlow/PyTorch required.", "₹14-22 LPA", LocalDateTime.now().minusDays(1)),
-                new Job(null, "Content Writer Intern", "Teachable", "Remote", "Internship", "Marketing", "Write educational blog content, course descriptions, and email newsletters.", "₹8,000/month", LocalDateTime.now().minusDays(3)),
-                new Job(null, "DevOps Engineer", "PhonePe", "Bangalore", "Full-time", "IT & Software", "Manage CI/CD pipelines, Kubernetes clusters, and AWS infrastructure for a high-traffic fintech app.", "₹12-18 LPA", LocalDateTime.now().minusDays(2)),
-                new Job(null, "HR Recruiter", "TCS", "Chennai", "Full-time", "Human Resources", "Handle end-to-end recruitment for technical roles. Campus hiring experience is a plus.", "₹4-6 LPA", LocalDateTime.now().minusDays(7)),
-                new Job(null, "Graphic Designer", "Canva India", "Remote", "Full-time", "Design", "Create marketing assets, social media graphics, and product illustrations.", "₹5-8 LPA", LocalDateTime.now().minusDays(4)),
-                new Job(null, "Mechanical Engineer", "Tata Motors", "Chennai", "Full-time", "Engineering", "CAD design, prototyping, and quality control for EV components.", "₹4-7 LPA", LocalDateTime.now().minusDays(8)),
-                new Job(null, "Business Development Intern", "Razorpay", "Bangalore", "Internship", "Sales", "Identify and onboard new merchant partners. Learn B2B sales at a top fintech startup.", "₹18,000/month", LocalDateTime.now().minusDays(1)),
-                new Job(null, "QA Engineer", "Wipro", "Hyderabad", "Full-time", "IT & Software", "Manual and automation testing of web and mobile applications using Selenium and JIRA.", "₹4-7 LPA", LocalDateTime.now().minusDays(5)),
-                new Job(null, "Cloud Solutions Architect", "Amazon India", "Hyderabad", "Full-time", "IT & Software", "Design and implement AWS cloud solutions for enterprise customers. AWS certification required.", "₹20-35 LPA", LocalDateTime.now().minusDays(2)),
-                new Job(null, "Sales Executive", "Urban Company", "Delhi", "Full-time", "Sales", "Drive B2C sales for home services. Must have excellent communication skills.", "₹3-5 LPA + incentives", LocalDateTime.now().minusDays(9)),
-                new Job(null, "Social Media Manager", "boAt", "Delhi", "Full-time", "Marketing", "Manage boAt's Instagram, YouTube, and Twitter. Create viral content strategies.", "₹5-8 LPA", LocalDateTime.now().minusDays(3)),
-                new Job(null, "Python Developer", "Freshworks", "Chennai", "Full-time", "IT & Software", "Build backend services and integrations for our CRM platform using Python/Django.", "₹7-12 LPA", LocalDateTime.now().minusDays(4)),
-                new Job(null, "Finance Intern", "Goldman Sachs", "Bangalore", "Internship", "Finance", "Support the investment banking team with financial modelling, research, and presentations.", "₹30,000/month", LocalDateTime.now().minusDays(6)),
-                new Job(null, "Civil Engineer", "L&T", "Mumbai", "Full-time", "Engineering", "Site supervision and project management for large infrastructure projects.", "₹5-9 LPA", LocalDateTime.now().minusDays(10)),
-                new Job(null, "iOS Developer", "Paytm", "Noida", "Full-time", "IT & Software", "Build and maintain Paytm's iOS app in Swift. Experience with payment flows is a plus.", "₹10-16 LPA", LocalDateTime.now().minusDays(3)),
-                new Job(null, "Customer Support Executive", "Byju's", "Bangalore", "Full-time", "Operations", "Handle student and parent queries via phone and chat. Empathy and problem-solving required.", "₹3-4 LPA", LocalDateTime.now().minusDays(5)),
-                new Job(null, "Frontend Developer Intern", "TechStart India", "Bangalore", "Internship", "IT & Software", "Work on React-based web apps. Learn Tailwind CSS, REST API integration, and Git workflow.", "₹15,000/month", LocalDateTime.now().minusDays(1))
-            );
+            Job job1 = new Job();
+            job1.setTitle("Frontend Developer Intern");
+            job1.setCompany("TechStart India");
+            job1.setLocation("Bangalore");
+            job1.setType("Internship");
+            job1.setCategory("IT & Software");
+            job1.setDescription("Work on React-based web apps");
+            job1.setSalary("₹15,000/month");
+            job1.setPostedAt(LocalDateTime.now());
+
+            Job job2 = new Job();
+            job2.setTitle("Java Backend Developer");
+            job2.setCompany("InfoSys");
+            job2.setLocation("Pune");
+            job2.setType("Full-time");
+            job2.setCategory("IT & Software");
+            job2.setDescription("Spring Boot microservices development");
+            job2.setSalary("₹6-10 LPA");
+            job2.setPostedAt(LocalDateTime.now());
+
+            Job job3 = new Job();
+            job3.setTitle("Digital Marketing Intern");
+            job3.setCompany("GrowthHive");
+            job3.setLocation("Remote");
+            job3.setType("Internship");
+            job3.setCategory("Marketing");
+            job3.setDescription("SEO, social media, and content marketing");
+            job3.setSalary("₹10,000/month");
+            job3.setPostedAt(LocalDateTime.now());
+
+            Job job4 = new Job();
+            job4.setTitle("UI/UX Designer");
+            job4.setCompany("DesignCo");
+            job4.setLocation("Mumbai");
+            job4.setType("Full-time");
+            job4.setCategory("Design");
+            job4.setDescription("Design mobile and web interfaces");
+            job4.setSalary("₹5-8 LPA");
+            job4.setPostedAt(LocalDateTime.now());
+
+            Job job5 = new Job();
+            job5.setTitle("Finance Analyst");
+            job5.setCompany("Deloitte");
+            job5.setLocation("Hyderabad");
+            job5.setType("Full-time");
+            job5.setCategory("Finance");
+            job5.setDescription("Financial modelling and reporting");
+            job5.setSalary("₹7-12 LPA");
+            job5.setPostedAt(LocalDateTime.now());
+
+            Job job6 = new Job();
+            job6.setTitle("Mechanical Engineer");
+            job6.setCompany("Tata Motors");
+            job6.setLocation("Chennai");
+            job6.setType("Full-time");
+            job6.setCategory("Engineering");
+            job6.setDescription("CAD design and product development");
+            job6.setSalary("₹4-7 LPA");
+            job6.setPostedAt(LocalDateTime.now());
+
+            List<Job> jobs = Arrays.asList(job1, job2, job3, job4, job5, job6);
 
             jobRepository.saveAll(jobs);
         }

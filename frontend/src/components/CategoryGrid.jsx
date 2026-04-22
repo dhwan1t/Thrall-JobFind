@@ -28,7 +28,10 @@ const CategoryGrid = () => {
                 navigate("/jobs", { state: { filterCategory: cat.name } })
               }
             >
-              <div style={{ fontSize: "3rem", marginBottom: "10px" }}>
+              <div
+                className="category-icon"
+                style={{ fontSize: "3rem", marginBottom: "10px" }}
+              >
                 {cat.icon}
               </div>
               <h3>{cat.name}</h3>

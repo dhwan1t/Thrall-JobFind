@@ -410,17 +410,180 @@ body {
     gap: 16px;
 }
 
-/* Job card and grid styling */
-.job-card {
+/* Jobs Page Styling */
+.jobs-page-layout {
+    display: flex;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 20px;
+}
+.filters-sidebar {
+    width: 260px;
+    flex-shrink: 0;
     background: white;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
-    transition: 0.2s;
+    align-self: flex-start;
+    position: sticky;
+    top: 70px;
+}
+.jobs-main {
+    flex: 1;
+    min-width: 0;
+}
+.jobs-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.jobs-count {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.sort-select {
+    padding: 7px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.skeleton-card {
+    background: #f0f0f0;
+    border-radius: 8px;
+    height: 140px;
+    margin-bottom: 14px;
+    animation: shimmer 1.2s ease-in-out infinite;
+}
+@keyframes shimmer {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+@media (max-width: 768px) {
+    .jobs-page-layout {
+        flex-direction: column;
+    }
+    .filters-sidebar {
+        width: 100%;
+        position: static;
+    }
 }
 
+/* Job card and grid styling */
+.job-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    transition:
+        box-shadow 0.2s,
+        border-color 0.2s;
+}
 .job-card:hover {
     border-color: var(--primary-color);
+    box-shadow: 0 4px 16px rgba(64, 130, 109, 0.12);
+}
+.job-card-header {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+.company-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: #e8f5f1;
+    color: #40826d;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.job-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+    cursor: pointer;
+}
+.job-title:hover {
+    color: var(--primary-color);
+}
+.job-company {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+.job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+.meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+.job-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.tag {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    background: #f0faf7;
+}
+.job-desc-preview {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+.job-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 12px;
+}
+.posted-date {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+.btn-view-details {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    padding: 6px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-view-details:hover {
+    background: var(--primary-color);
+    color: white;
 }
 
 .jobs-grid {
@@ -949,3 +1112,9 @@ select.form-input:focus, textarea.form-input:focus, input.form-input:focus { out
 
 .applied-badge { font-size: 12px; font-weight: 700; color: #40826D; background: #e8f5f1; border: 1px solid #40826D; border-radius: 20px; padding: 4px 12px; }
 
+
+.category-card { cursor:pointer; transition:transform 0.15s, box-shadow 0.15s; }
+.category-card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(64,130,109,0.15); border-color:var(--primary-color); }
+.hero-stats { display:flex; gap:20px; justify-content:center; margin-top:20px; flex-wrap:wrap; }
+.hero-stat { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:6px 16px; font-size:13px; font-weight:600; }
+.applied-badge { font-size:12px; font-weight:700; color:#40826D; background:#e8f5f1; border:1px solid #40826D; border-radius:20px; padding:4px 12px; }

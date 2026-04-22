@@ -1,13 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const userStr = localStorage.getItem("jobquest_user");
   const user = userStr ? JSON.parse(userStr) : null;
 
   const handleLogout = () => {
     localStorage.removeItem("jobquest_user");
-    window.location.reload();
+    navigate("/");
   };
 
   return (
@@ -15,7 +16,9 @@ export default function Navbar() {
       <div className="container">
         <nav className="navbar">
           <div className="logo">
-            <h1>Thrall</h1>
+            <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+              <h1>Thrall</h1>
+            </Link>
           </div>
 
           <ul className="nav-links">
@@ -23,10 +26,7 @@ export default function Navbar() {
               <Link to="/jobs">Browse Jobs</Link>
             </li>
             <li>
-              <a href="#internships">Internships</a>
-            </li>
-            <li>
-              <a href="#companies">Companies</a>
+              <Link to="/jobs">Internships</Link>
             </li>
             {user ? (
               <>

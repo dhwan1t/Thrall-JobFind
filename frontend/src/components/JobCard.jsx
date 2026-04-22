@@ -1,86 +1,65 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-const JobCard = ({ job, applied }) => {
-  const navigate = useNavigate();
-
+const JobCard = ({ job, onClick, applied }) => {
   const truncateDescription = (desc) => {
     if (!desc) return "";
     return desc.length > 120 ? desc.substring(0, 120) + "..." : desc;
   };
 
-  const companyInitial = job.company
-    ? job.company.charAt(0).toUpperCase()
-    : "C";
-  const salaryDisplay = job.salary ? job.salary : "Salary not disclosed";
-
-  const isFresher =
-    job.salary &&
-    (job.salary.toLowerCase().includes("month") ||
-      (job.type && job.type.toLowerCase().includes("internship")));
-  const experienceTag = isFresher ? "Fresher" : "1-3 yrs";
-
-  let postedDateDisplay = "Recently";
-  if (job.postedAt) {
-    const postedDate = new Date(job.postedAt);
-    const today = new Date();
-    const diffTime = Math.abs(today - postedDate);
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    if (diffDays === 0) {
-      postedDateDisplay = "Today";
-    } else if (diffDays === 1) {
-      postedDateDisplay = "1 day ago";
-    } else if (diffDays > 1) {
-      postedDateDisplay = `${diffDays} days ago`;
-    }
-  }
-
-  const handleNavigate = () => {
-    navigate(`/jobs/${job.id}`);
+  const getDaysAgo = (dateString) => {
+    if (!dateString) return "Recently";
+    const days = Math.floor(
+      (new Date() - new Date(dateString)) / (1000 * 60 * 60 * 24),
+    );
+    if (days === 0) return "Today";
+    if (days === 1) return "1 day ago";
+    return `${days} days ago`;
   };
 
+  const getExperience = () => {
+    if (
+      job.type?.toLowerCase() === "internship" ||
+      job.salary?.toLowerCase().includes("month")
+    ) {
+      return "Fresher";
+    }
+    return "1-3 yrs";
+  };
+
+  const firstLetter = job.company ? job.company.charAt(0).toUpperCase() : "C";
+
   return (
-    <div className="job-card">
+    <div className="job-card" onClick={onClick}>
       <div className="job-card-header">
-        <div className="company-logo">{companyInitial}</div>
+        <div className="company-logo">{firstLetter}</div>
         <div>
-          <h3 className="job-title" onClick={handleNavigate}>
-            {job.title}
-          </h3>
+          <h3 className="job-title">{job.title}</h3>
           <p className="job-company">{job.company}</p>
         </div>
       </div>
 
       <div className="job-meta">
-        <div className="meta-chip">
-          {job.location || "Location not specified"}
-        </div>
-        <div className="meta-chip">{job.type || "Full-time"}</div>
-        <div className="meta-chip">{salaryDisplay}</div>
+        <span className="meta-chip">{job.location || "N/A"}</span>
+        <span className="meta-chip">{job.type || "Full-time"}</span>
+        <span className="meta-chip">
+          {job.salary || "Salary not disclosed"}
+        </span>
       </div>
 
       <div className="job-tags">
         {job.category && <span className="tag">{job.category}</span>}
-        <span className="tag">{experienceTag}</span>
+        <span className="tag">{getExperience()}</span>
       </div>
 
       <p className="job-desc-preview">{truncateDescription(job.description)}</p>
 
-      <div
-        className="job-card-footer"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <span className="posted-date">{postedDateDisplay}</span>
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          {applied && <span className="applied-badge">Applied</span>}
-          <button className="btn-view-details" onClick={handleNavigate}>
-            View Details
-          </button>
-        </div>
+      <div className="job-card-footer">
+        <span className="posted-date">{getDaysAgo(job.postedAt)}</span>
+        {applied ? (
+          <span className="applied-badge">Applied</span>
+        ) : (
+          <button className="btn-view-details">View Details</button>
+        )}
       </div>
     </div>
   );

@@ -32,9 +32,9 @@ export default function Hero() {
             <span className="hero-stat">Free for Job Seekers</span>
           </div>
           <div className="hero-buttons">
-            <a href="#search" className="btn btn-primary">
+            <Link to="/jobs" className="btn btn-primary">
               Search Jobs
-            </a>
+            </Link>
             <Link
               to="/jobs"
               state={{ filterCategory: "IT & Software" }}

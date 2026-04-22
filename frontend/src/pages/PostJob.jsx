@@ -22,7 +22,9 @@ const PostJob = () => {
       alert("Please login to post a job");
       navigate("/login");
     } else {
-      setUser(JSON.parse(storedUser));
+      Promise.resolve().then(() => {
+        setUser(JSON.parse(storedUser));
+      });
     }
   }, [navigate]);
 
@@ -51,6 +53,7 @@ const PostJob = () => {
         description: "",
       });
     } catch (error) {
+      console.error(error);
       setMessage({
         text: "Error posting job. Please try again.",
         type: "error",

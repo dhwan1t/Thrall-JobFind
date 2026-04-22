@@ -21,7 +21,9 @@ const ApplyPage = () => {
       return;
     }
     const parsedUser = JSON.parse(storedUserStr);
-    setUser(parsedUser);
+    Promise.resolve().then(() => {
+      setUser(parsedUser);
+    });
 
     getJobById(jobId)
       .then((res) => setJob(res.data))
@@ -65,7 +67,11 @@ const ApplyPage = () => {
             <Link to="/jobs">
               <button
                 className="btn-apply-now"
-                style={{ width: "auto", marginTop: "16px", padding: "10px 24px" }}
+                style={{
+                  width: "auto",
+                  marginTop: "16px",
+                  padding: "10px 24px",
+                }}
               >
                 Back to Jobs
               </button>
@@ -85,14 +91,26 @@ const ApplyPage = () => {
             )}
 
             {errorMessage && (
-              <div style={{ color: "red", marginBottom: "16px", fontWeight: "600" }}>
+              <div
+                style={{
+                  color: "red",
+                  marginBottom: "16px",
+                  fontWeight: "600",
+                }}
+              >
                 {errorMessage}
               </div>
             )}
 
             <form onSubmit={handleSubmit}>
               <div style={{ marginBottom: "16px" }}>
-                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "6px",
+                    fontWeight: "600",
+                  }}
+                >
                   Name
                 </label>
                 <input
@@ -104,7 +122,13 @@ const ApplyPage = () => {
               </div>
 
               <div style={{ marginBottom: "16px" }}>
-                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "6px",
+                    fontWeight: "600",
+                  }}
+                >
                   Email
                 </label>
                 <input
@@ -116,7 +140,13 @@ const ApplyPage = () => {
               </div>
 
               <div style={{ marginBottom: "16px" }}>
-                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "6px",
+                    fontWeight: "600",
+                  }}
+                >
                   Phone Number *
                 </label>
                 <input
@@ -129,7 +159,13 @@ const ApplyPage = () => {
               </div>
 
               <div style={{ marginBottom: "24px" }}>
-                <label style={{ display: "block", marginBottom: "6px", fontWeight: "600" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "6px",
+                    fontWeight: "600",
+                  }}
+                >
                   Cover Letter
                 </label>
                 <textarea
@@ -147,7 +183,9 @@ const ApplyPage = () => {
                 className="btn-apply-now"
                 disabled={status === "submitting"}
               >
-                {status === "submitting" ? "Submitting..." : "Submit Application"}
+                {status === "submitting"
+                  ? "Submitting..."
+                  : "Submit Application"}
               </button>
             </form>
           </>

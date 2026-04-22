@@ -16,7 +16,9 @@ export default function Profile() {
       return;
     }
     const userData = JSON.parse(userStr);
-    setUser(userData);
+    Promise.resolve().then(() => {
+      setUser(userData);
+    });
 
     getMyApplications(userData.id)
       .then((res) => {
